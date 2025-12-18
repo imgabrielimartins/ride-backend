@@ -40,4 +40,22 @@ export class ProdutoService {
     await this.findById(id);
     return await this.produtoRepository.delete(id);
   }
+
+  async calcularTempo(id: number): Promise<number> {
+    const viagem = await this.findById(id);
+    const tempo = viagem.distanciaKm / viagem.velocidadeMediaKmh;
+    const minutos = tempo * 60;
+
+    return minutos;
+  }
+
+  async mudarTipoViagem(id: number): Promise<boolean> {
+    const viagem = await this.findById(id);
+
+    viagem.motoristaMesmoGenero = !viagem.motoristaMesmoGenero;
+
+    await this.produtoRepository.save(viagem);
+
+    return viagem.motoristaMesmoGenero;
+  }
 }

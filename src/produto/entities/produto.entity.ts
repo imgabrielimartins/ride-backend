@@ -46,6 +46,9 @@ export class Produto {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   data: Date;
 
+  @Column()
+  motoristaMesmoGenero: boolean;
+
   @ManyToOne(() => Categoria, (categoria) => categoria.produto, {
     onDelete: 'CASCADE',
   })

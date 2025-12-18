@@ -6,7 +6,6 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  ParseFloatPipe,
   ParseIntPipe,
   Post,
   Put,
@@ -49,12 +48,16 @@ export class ProdutoController {
   }
 
   // Funcao Adicional - Calculo tempo
-  @Get('/tempodistancia/:distancia')
+  @Get('/calculartempo/:id')
   @HttpCode(HttpStatus.OK)
-  calcularTempo(@Param('distancia', ParseFloatPipe) distancia: number) {
-    const velocidadeMedia = 50;
-    const tempo = distancia / velocidadeMedia;
-    const minutos = tempo * 60;
-    return minutos;
+  calcularTempo(@Param('id', ParseIntPipe) id: number) {
+    return this.produtoService.calcularTempo(id);
+  }
+
+  // Funcao Adicional - Mudar atributo motorista do mesmo genero
+  @Get('/mudarTipoViagem/:id')
+  @HttpCode(HttpStatus.OK)
+  mudarTipoViagem(@Param('id', ParseIntPipe) id: number) {
+    return this.produtoService.mudarTipoViagem(id);
   }
 }
