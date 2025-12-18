@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseFloatPipe,
   ParseIntPipe,
   Post,
   Put,
@@ -45,5 +46,15 @@ export class ProdutoController {
   @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.produtoService.delete(id);
+  }
+
+  // Funcao Adicional - Calculo tempo
+  @Get('/tempodistancia/:distancia')
+  @HttpCode(HttpStatus.OK)
+  calcularTempo(@Param('distancia', ParseFloatPipe) distancia: number) {
+    const velocidadeMedia = 50;
+    const tempo = distancia / velocidadeMedia;
+    const minutos = tempo * 60;
+    return minutos;
   }
 }

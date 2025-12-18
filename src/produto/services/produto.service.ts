@@ -11,7 +11,6 @@ export class ProdutoService {
   ) {}
 
   async findAll(): Promise<Produto[]> {
-    
     return await this.produtoRepository.find();
   }
 
@@ -28,13 +27,12 @@ export class ProdutoService {
   }
 
   async create(produto: Produto): Promise<Produto> {
-    
     return this.produtoRepository.save(produto);
   }
 
   async update(produto: Produto): Promise<Produto> {
     await this.findById(produto.id);
-   
+
     return this.produtoRepository.save(produto);
   }
 
