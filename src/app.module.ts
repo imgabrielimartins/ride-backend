@@ -16,7 +16,7 @@ import { AppController } from './app.controller';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '395516gta@N',
+      password: 'root',
       database: 'db_ride',
       entities: [Usuario, Produto, Categoria],
       synchronize: true,

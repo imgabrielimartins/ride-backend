@@ -9,7 +9,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
   .setTitle('Velo')
   .setDescription('')
-  .setContact("","","")
+  .setContact("Vertex.bah","https://github.com/Grupo-4-Turma-JavaScript-10","vertex.bah@gmail.com")
   .setVersion('1.0')
   .addBearerAuth()
   .build();
@@ -23,6 +23,6 @@ async function bootstrap() {
 
   app.enableCors();
 
-  await app.listen(process.env.PORT ?? 4009);
+  await app.listen(process.env.PORT ?? 4000);
 }
 bootstrap();

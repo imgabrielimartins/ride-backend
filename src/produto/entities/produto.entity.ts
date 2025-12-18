@@ -62,7 +62,7 @@ export class Produto {
   @ApiProperty()
   motoristaMesmoGenero: boolean;
 
-  @ApiProperty()
+  @ApiProperty({type: () => Categoria})
   @ManyToOne(() => Categoria, (categoria) => categoria.produto, {
     onDelete: 'CASCADE',
   })
