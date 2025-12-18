@@ -1,9 +1,21 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const config = new DocumentBuilder()
+  .setTitle('Velo')
+  .setDescription('')
+  .setContact("Vertex.bah","https://github.com/Grupo-4-Turma-JavaScript-10","vertex.bah@gmail.com")
+  .setVersion('1.0')
+  .addBearerAuth()
+  .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('/swagger', app, document);
 
   process.env.TZ = '-03:00';
 
